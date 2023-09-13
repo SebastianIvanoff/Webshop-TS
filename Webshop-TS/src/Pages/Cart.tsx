@@ -1,5 +1,5 @@
-
-import { CartContext , useCart } from '../context/CartContext';
+import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -10,7 +10,8 @@ const Cart = () => {
 
   const handleIncreaseQuantity = (productId: number) => {
     // Implement a function to increase quantity
-    const updatedQuantity = cart.find((item) => item.product.id === productId)?.quantity + 1;
+    const updatedQuantity =
+      cart.find((item) => item.product.id === productId)?.quantity + 1;
     if (updatedQuantity !== undefined) {
       updateQuantity(productId, updatedQuantity);
     }
@@ -27,6 +28,11 @@ const Cart = () => {
     }
   };
 
+  // Calculate the total price of all products in the cart
+  const totalCartPrice = cart.reduce((total, item) => {
+    return total + item.product.price * item.quantity;
+  }, 0);
+
   return (
     <div>
       <h1>Shopping Cart</h1>
@@ -37,6 +43,7 @@ const Cart = () => {
               <h3>{item.product.name}</h3>
               <p>Price: {item.product.price} kr</p>
               <p>Quantity: {item.quantity}</p>
+              <p>Total Price: {item.product.price * item.quantity} kr</p>
               <button onClick={() => handleIncreaseQuantity(item.product.id)}>+</button>
               <button onClick={() => handleDecreaseQuantity(item.product.id)}>-</button>
               <button onClick={() => handleRemoveFromCart(item.product.id)}>Remove</button>
@@ -44,6 +51,7 @@ const Cart = () => {
           ))}
         </ul>
       </div>
+      <p>Total Cart Price: {totalCartPrice} kr</p>
     </div>
   );
 };
