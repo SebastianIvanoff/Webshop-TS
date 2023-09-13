@@ -1,0 +1,16 @@
+.cart-container {
+  .cart-list {
+    .cart-item {
+      display: flex;
+      background-color: #fff;
+      border-radius: 1rem;
+      margin: 1rem;
+      padding: 3rem;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      max-height: 20rem;
+      min-width: 15rem;
+    }
+  }
+}

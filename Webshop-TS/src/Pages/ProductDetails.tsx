@@ -1,10 +1,11 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import products from '../Types'; // Import the entire 'products' array
-import Product from '../Types'; // Import the 'Product' type
+import { useParams } from "react-router-dom";
+
+import products from "../Types";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function ProductDetails() {
-  const { id } = useParams<{ id?: string }>(); // Notice the "?" to indicate the parameter is optional
+  const { id } = useParams<{ id: string }>(); // Define the type directly in useParams
 
   if (!id) {
     return <div>Product ID not provided</div>;
@@ -17,12 +18,22 @@ function ProductDetails() {
     return <div>Product not found</div>;
   }
 
+  const { addToCart } = useContext(CartContext);
+
   return (
-    <div className='product'>
-      <h2>{product.name}</h2>
-          <p>Price: {product.price} kr</p>
-          <img className='product-img' src={product.imgURL} alt={product.name} />
-          <p>{product.description}</p>
+    <div className="details-container">
+      <div className="details-wrapper">
+        <h2>{product.name}</h2>
+        <p>Price: {product.price} kr</p>
+        <img className="details-img" src={product.imgURL} alt={product.name} />
+        <p>{product.description}</p>
+        <button
+                onClick={() => addToCart(product)} // Add the product to the cart on button click
+                className="add-to-cart-button"
+              >
+                Add to Cart
+              </button>
+      </div>
     </div>
   );
 }
