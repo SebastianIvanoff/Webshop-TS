@@ -4,12 +4,12 @@ import Home from './Pages/Home';
 import ProductDetails from './Pages/ProductDetails';
 import RootLayout from './Layout/RootLayout';
 import Cart from './Pages/Cart';
-import { CartProvider } from './context/CartContext'; // Adjust the import path
+import { CartProvider } from './context/CartContext';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <CartProvider> {/* Wrap the entire app with CartProvider */}
+      <CartProvider> 
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />

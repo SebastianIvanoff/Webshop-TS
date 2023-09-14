@@ -5,6 +5,7 @@ import products from "../Types";
 
 function ProductList() {
   const { addToCart } = useContext(CartContext); // Use the addToCart function from your CartContext
+  //addToCart is red but the function still works
 
   return (
     <>

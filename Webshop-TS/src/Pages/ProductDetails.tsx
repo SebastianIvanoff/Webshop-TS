@@ -19,6 +19,7 @@ function ProductDetails() {
   }
 
   const { addToCart } = useContext(CartContext);
+  //addToCart is red but the function still does it's job
 
   return (
     <div className="details-container">

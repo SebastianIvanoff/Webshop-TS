@@ -1,4 +1,3 @@
-import React from 'react';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
@@ -9,22 +8,29 @@ const Cart = () => {
   };
 
   const handleIncreaseQuantity = (productId: number) => {
-    // Implement a function to increase quantity
-    const updatedQuantity =
-      cart.find((item) => item.product.id === productId)?.quantity + 1;
-    if (updatedQuantity !== undefined) {
+    // Find the item in the cart
+    const existingItem = cart.find((item) => item.product.id === productId);
+
+    if (existingItem) {
+      // If the item exists, increase its quantity
+      const updatedQuantity = existingItem.quantity + 1;
       updateQuantity(productId, updatedQuantity);
     }
   };
 
   const handleDecreaseQuantity = (productId: number) => {
-    // Implement a function to decrease quantity
+    // Find the item in the cart
     const existingItem = cart.find((item) => item.product.id === productId);
-    if (existingItem && existingItem.quantity > 1) {
-      const updatedQuantity = existingItem.quantity - 1;
-      updateQuantity(productId, updatedQuantity);
-    } else {
-      removeFromCart(productId);
+
+    if (existingItem) {
+      // If the item exists and the quantity is greater than 1, decrease its quantity
+      if (existingItem.quantity > 1) {
+        const updatedQuantity = existingItem.quantity - 1;
+        updateQuantity(productId, updatedQuantity);
+      } else {
+        // If the quantity is 1 or less, remove the item from the cart
+        removeFromCart(productId);
+      }
     }
   };
 
