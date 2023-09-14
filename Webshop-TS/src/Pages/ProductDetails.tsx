@@ -30,7 +30,7 @@ function ProductDetails() {
         <p>{product.description}</p>
         <button
                 onClick={() => addToCart(product)} // Add the product to the cart on button click
-                className="add-to-cart-button"
+                className="addToCart"
               >
                 Add to Cart
               </button>
