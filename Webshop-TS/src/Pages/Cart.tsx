@@ -50,9 +50,11 @@ const Cart = () => {
               <p>Price: {item.product.price} kr</p>
               <p>Quantity: {item.quantity}</p>
               <p>Total Price: {item.product.price * item.quantity} kr</p>
-              <button onClick={() => handleIncreaseQuantity(item.product.id)}>+</button>
-              <button onClick={() => handleDecreaseQuantity(item.product.id)}>-</button>
-              <button onClick={() => handleRemoveFromCart(item.product.id)}>Remove</button>
+              <div className='quantity-btn'>
+              <button className='increace-decrease' onClick={() => handleIncreaseQuantity(item.product.id)}>+</button>
+              <button className='increace-decrease' onClick={() => handleDecreaseQuantity(item.product.id)}>-</button>
+              </div>
+              <button className='remove-btn' onClick={() => handleRemoveFromCart(item.product.id)}>Remove</button>
             </li>
           ))}
         </ul>
