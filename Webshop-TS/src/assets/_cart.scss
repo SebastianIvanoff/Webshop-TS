@@ -11,6 +11,26 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       max-height: 20rem;
       min-width: 15rem;
+      .quantity-btn{
+        margin: .2rem;
+        .increace-decrease{
+          padding: .25rem;
+          margin: 0 .5rem 0 .5rem;
+          min-width: 30px;
+          border: none;
+          background-color: darkgray;
+          cursor: pointer;
+          border-radius: .4rem;
+        }
+      }
+      .remove-btn{
+        padding: .4rem;
+        background-color: #dc3545;
+        border: none;
+        cursor: pointer;
+        border-radius: .3rem;
+        margin-top: .4rem;
+      }
     }
   }
 }
